@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  
+  <meta charset="UTF-8">
+  <title>Are you the Jedi Master?</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="css/style.css">
+  
+</head>
+
+<body>
+
+      <div class="container">
+
+          <div class="row">
+
+              <div class="col-lg-8 col-lg-offset-2">
+
+                  <h1>Jedi Information</h1>
+                  <div id="validate-message"></div>
+                  <form class="jedi-info" >
+                    <div class="form-group required" >
+                      <label class="control-label" for="firstname">First Name</label>
+                      <!-- use 'control-label' class as the red * will be after control-label -->
+                      <input type="text" class="form-control" id="firstname" placeholder="First Name" >
+                    </div>
+                    <div class="form-group required">
+                      <label class="control-label" for="lastname">Last Name</label>
+                      <input type="text" class="form-control" id="lastname" placeholder="Last Name" >
+                    </div>
+                    <div class="form-group required">
+                      <label class="control-label" for="nickname">Nick Name</label>
+                      <input type="text" class="form-control" id="nickname" placeholder="Nick Name" >
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="validate()">Submit</button>
+                  </form>
+
+              </div>
+
+          </div>
+
+      </div>
+
+      <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+      <script src="js/validator.js"></script>
+</body>
+
+</html>

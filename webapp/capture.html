@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1">
+  <title>Are you the Jedi Master?</title>
+
+  <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="css/image-capture.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://sdk.amazonaws.com/js/aws-sdk-2.250.1.min.js"></script>
+  
+</head>
+
+<body>
+
+  <div id="container">
+
+    <h1>Pose 1</h1>
+
+    <video autoplay></video>
+    <button>Take snapshot</button>
+    <button type='button' id='upload-button'>Upload image</button>
+    <canvas></canvas>
+
+    <p>Try to pose as closely as possible to the reference pose and click "Take snapshot" when ready.</p>
+
+    
+  </div>
+
+  <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+  <script src="js/image-capture.js"></script>
+
+</body>
+
+</html>

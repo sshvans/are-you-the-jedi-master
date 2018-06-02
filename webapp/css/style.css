@@ -1,0 +1,8 @@
+#validate-message { 
+	height: 60px;
+}
+
+.form-group.required .control-label:after { 
+   content:"*";
+   color:red;
+}
