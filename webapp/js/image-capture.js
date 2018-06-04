@@ -10,8 +10,10 @@ var canvas = window.canvas = document.querySelector('canvas');
 canvas.width = 480;
 canvas.height = 360;
 
-var button = document.querySelector('button');
+var button = document.getElementById('captureBtn');
 button.onclick = function() {
+  console.log(video.videoWidth);
+  console.log(video.videoHeight);
   canvas.width = video.videoWidth;
   canvas.height = video.videoHeight;
   canvas.getContext('2d').
@@ -65,6 +67,15 @@ var s3 = new AWS.S3({
 
 $(function () {
   $('#upload-button').click(upload);
+
+  $("#captureBtn").on({
+    mouseenter: function(){
+      $(this).attr('src','images/camera_dark.png');
+    },
+    mouseleave: function(){
+      $(this).attr('src','images/camera.png');
+    }
+  });
 });
 
 function upload() {
