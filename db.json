@@ -1,0 +1,17 @@
+{
+  "leaderboard": [
+    { "id": 1, "nickname": "yoda", "score": "95" },
+    { "id": 2, "nickname": "luke", "score": "88" },
+    { "id": 3, "nickname": "ray", "score": "72" }
+  ],
+  "score": { 
+    "id": 1, 
+    "nickname": "yoda", 
+    "score": "95" 
+  },
+  "register": {
+    "nickname": "nickname",
+    "firstname": "first",
+    "lastname": "last"
+  }
+}
