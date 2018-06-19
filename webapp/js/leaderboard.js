@@ -3,7 +3,7 @@
 
 $.get( "https://my-json-server.typicode.com/sshvans/are-you-the-jedi-master/leaderboard", function( data ) {
   console.log(String(data[0].nickname));
-  $( "#message" ).html( data[0].nickname );
+  //$( "#message" ).html( data[0].nickname );
   if (Array.isArray(data)) {
   	var rank = 0;
   	data.forEach(function(item) {

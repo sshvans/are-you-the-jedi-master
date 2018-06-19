@@ -70,8 +70,8 @@ max-width: 100%;
 body {
 font-family: 'Roboto', sans-serif;
 margin: 0;
-padding: 1em;
-word-break: break-word;
+/*padding: 1em;
+word-break: break-word;*/
 }
 
 button {
@@ -142,7 +142,7 @@ border-bottom: 1px solid #ccc;
 font-family: 'Roboto', sans-serif;
 font-weight: 500;
 margin: 0 0 0.8em 0;
-padding: 0 0 0.2em 0;
+padding: 0.5em 0 0.2em 0;
 }
 
 h2 {
@@ -155,7 +155,7 @@ margin: 0 0 0.8em 0;
 
 h3 {
 /*border-top: 1px solid #eee;*/
-color: #666;
+color: #fcf7f7;
 font-weight: 500;
 margin: 20px 0 10px 0;
 padding: 10px 0 0 0;
@@ -179,7 +179,7 @@ top: -1px;
 }
 
 p {
-color: #444;
+color: #ECE9E2;
 font-weight: 300;
 line-height: 1.6em;
 }
@@ -280,6 +280,10 @@ div#imageContainer{
 
 #prevBtn:hover {
   opacity: 0.3;
+}
+
+#getScoreBtn {
+  margin: 100px 0 0 0;
 }
 
 @media screen and (max-width: 650px) {

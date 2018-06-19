@@ -97,7 +97,8 @@ function uploadImage(nickname) {
     var dataUrl = canvas.toDataURL("image/jpeg");
     var blobData = dataURItoBlob(dataUrl);
     var filename = nickname + '_profile.jpg';
-    var params = {Key: filename, ContentType: 'image/jpeg', Body: blobData};
+    var keyPrefix = "profiles/" + filename;
+    var params = {Key: keyPrefix, ContentType: 'image/jpeg', Body: blobData};
     s3.upload(params, function (err, data) {
       console.log(data);
       console.log(err ? 'ERROR!' : 'UPLOADED.');
@@ -193,7 +194,7 @@ function registerUser() {
   });
 }
 
-// Persist item in handle array in localstorage
+// Persist item in handle array in localstorage.
 function persistLocally(item, handle) {
   var nicknamesArrString = window.localStorage.getItem(handle);
   if (nicknamesArrString === null) {  // nicknames array doesn't exist in localstorage
@@ -209,6 +210,8 @@ function persistLocally(item, handle) {
     nicknamesArr.push(nickname);
     window.localStorage.setItem(handle, JSON.stringify(nicknamesArr));
   }
+  // also store nickname in localstorage for quick access by other pages
+  window.localStorage.setItem("nickname", item);
 }
 
 // Register user using promises

@@ -1,26 +1,28 @@
 //Documentation jquery get call
 // https://api.jquery.com/jquery.get/
 
-$.get( "https://my-json-server.typicode.com/sshvans/are-you-the-jedi-master/score", function( data ) {
-  console.log(String(data.nickname));
-  console.log(String(data.score));
-  var nickname = data.nickname;
-  var score = data.score;
-  var msg = "";
+function getScore() {
+	$.get( "https://my-json-server.typicode.com/sshvans/are-you-the-jedi-master/score", function( data ) {
+	  console.log(String(data.nickname));
+	  console.log(String(data.score));
+	  var nickname = data.nickname;
+	  var score = data.score;
+	  var msg = "";
 
-  // Show score
-  if (score > 75) {
-  	msg = "Well done " + nickname + "! Your score is " + String(score) + ".";
-  } else {
-  	msg = "Not bad " + nickname + "! Your score is " + String(score) + ".";
-  }
-  $( "#score-msg" ).html( msg );
-  
-  // Show images
-  for(var i = 1; i <= 5; i++) {
-  	addRow(i, nickname);
-  }
-});
+	  // Show score
+	  if (score > 75) {
+	  	msg = "Well done " + nickname + "! Your score is " + String(score) + ".";
+	  } else {
+	  	msg = "Not bad " + nickname + "! Your score is " + String(score) + ".";
+	  }
+	  $( "#score-msg" ).html( msg );
+	  
+	  // Show images
+	  for(var i = 1; i <= 5; i++) {
+	  	addRow(i, nickname);
+	  }
+	});
+}
 
 function addRow(poseNo, nickname) {
 	var newrow = document.createElement("tr");
@@ -58,3 +60,17 @@ function createRowTHColumn(row) {
   row.appendChild(column);
   return column;
 }
+
+//------------------------------------------------------------------------
+// Wait for 5 seconds before doing anything on this page
+//------------------------------------------------------------------------
+var delayInMilliseconds = 5000; //5 seconds
+
+setTimeout(function() {
+  //this code to be executed after 5 seconds
+  getScore();
+  $('#spin-load').hide();
+  $('#score-msg').show();
+  $('#poseTable').show();
+  $('#leaderBtn').show();
+}, delayInMilliseconds);

@@ -70,8 +70,8 @@ max-width: 100%;
 body {
 font-family: 'Roboto', sans-serif;
 margin: 0;
-padding: 1em;
-word-break: break-word;
+/*padding: 1em;
+word-break: break-word;*/
 }
 
 button {
@@ -142,7 +142,7 @@ border-bottom: 1px solid #ccc;
 font-family: 'Roboto', sans-serif;
 font-weight: 500;
 margin: 0 0 0.8em 0;
-padding: 0 0 0.2em 0;
+padding: 0.5em 0 0.2em 0;
 }
 
 h2 {
@@ -175,11 +175,11 @@ body, html {
     height: 100%;
 }
 
-html {
-/* avoid annoying page width change
-when moving from the home page */
+/* html {
+avoid annoying page width change
+when moving from the home page 
 overflow-y: scroll;
-}
+}*/
 
 img {
 border: none;

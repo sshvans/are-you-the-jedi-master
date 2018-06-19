@@ -21,13 +21,14 @@
 
   <div class="container bg">
     <h1 class="text-center">Are you the Jedi Master?</h1>
-    <h3 id="score-msg" class="text-center"></h3>
+    <h3 id="score-msg" class="text-center" style="display: none;"></h3>
+    <div class="text-center" id="spin-load"><img src="images/loader.gif"/></div>
     <p id="message" class="text-center"></p>
     <div class="row justify-content-center m-2">
       <div class="col text-right">
       </div>
       <div class="col text-center">
-      	<table class="table table-dark">
+      	<table id="poseTable" class="table table-dark" style="display: none;">
       		<thead>
       			<tr>
       				<th scope="col">Pose #</th>
@@ -44,7 +45,7 @@
       </div>
     </div>
     <div class="row justify-content-center m-2">
-      <button type="button" class="btn btn-primary" onclick="location.href='leaderboard.html';">Leaderboard</button>
+      <button id="leaderBtn" style="display: none;" type="button" class="btn btn-primary" onclick="location.href='leaderboard.html';">Leaderboard</button>
     </div>
   </div>
 

@@ -6,12 +6,20 @@ var cardTitle = [
 	"Pose 5"
 ];
 
+var cardNumber = [
+	"1",
+	"2",
+	"3",
+	"4",
+	"5"
+];
+
 var cardDesc = [];
-cardDesc[0] = "Judgment tells a ...";
-cardDesc[1] = "The Magician generally ...";
-cardDesc[2] = "Strength is the rawest ...";
-cardDesc[3] = "Your identification ...";
-cardDesc[4] = "The World is an indicator ...";
+cardDesc[0] = "Pose 1 ...";
+cardDesc[1] = "Pose 2 ...";
+cardDesc[2] = "Pose 3 ...";
+cardDesc[3] = "Pose 4 ...";
+cardDesc[4] = "Pose 5 ...";
 
 
 var drawCard = [
@@ -29,6 +37,7 @@ $(function () {
 		function(){
 			drawNum=drawNum - 1;
 		    $("#title").html(cardTitle[drawNum]);
+		    $("#poseNumber").html(cardNumber[drawNum]);
 		    $("#desc").html(cardDesc[drawNum]);
 		    $("#showImage").fadeOut(
 		      function(){
@@ -43,6 +52,7 @@ $(function () {
 	    //var drawNum = Math.floor(Math.random() * drawCard.length);
 	    drawNum=drawNum + 1;
 	    $("#title").html(cardTitle[drawNum]);
+	    $("#poseNumber").html(cardNumber[drawNum]);
 	    $("#desc").html(cardDesc[drawNum]);
 	    $("#showImage").fadeOut(
 	      function(){

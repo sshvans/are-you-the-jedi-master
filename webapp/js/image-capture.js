@@ -66,7 +66,6 @@ var s3 = new AWS.S3({
 });
 
 $(function () {
-  
   $('#uploadBtn').click(upload);
   $("#uploadBtn").on({
     mouseenter: function(){
@@ -87,13 +86,17 @@ $(function () {
   });
 });
 
+// Get nickname from localstorage and save it in global variable
+var nicknameStr = window.localStorage.getItem("nickname");
+
 function upload() {
   console.log('Uploading canvas image');
   var dataUrl = canvas.toDataURL("image/jpeg");
   var blobData = dataURItoBlob(dataUrl);
-  var pose_name = document.getElementById("title").textContent;
-  var filename = sessionStorage.nickname + "_" + pose_name + '_image.jpeg';
-  var params = {Key: filename, ContentType: 'image/jpeg', Body: blobData};
+  var poseNumber = document.getElementById("poseNumber").textContent;
+  var filename = nicknameStr + "_pose" + poseNumber + '.jpg';
+  var keyPrefix = "images/" + filename;
+  var params = {Key: keyPrefix, ContentType: 'image/jpeg', Body: blobData};
   s3.upload(params, function (err, data) {
       console.log(data);
       console.log(err ? 'ERROR!' : 'UPLOADED.');
@@ -109,3 +112,4 @@ function dataURItoBlob(dataURI) {
     }
     return new Blob([new Uint8Array(array)], {type: 'image/jpeg'});
 }
+
