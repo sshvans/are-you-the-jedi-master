@@ -66,7 +66,16 @@ var s3 = new AWS.S3({
 });
 
 $(function () {
-  $('#upload-button').click(upload);
+  
+  $('#uploadBtn').click(upload);
+  $("#uploadBtn").on({
+    mouseenter: function(){
+      $(this).attr('src','images/upload-button-dark.png');
+    },
+    mouseleave: function(){
+      $(this).attr('src','images/upload-button.png');
+    }
+  });
 
   $("#captureBtn").on({
     mouseenter: function(){
@@ -82,7 +91,8 @@ function upload() {
   console.log('Uploading canvas image');
   var dataUrl = canvas.toDataURL("image/jpeg");
   var blobData = dataURItoBlob(dataUrl);
-  var filename = 'sampleImage.jpeg';
+  var pose_name = document.getElementById("title").textContent;
+  var filename = sessionStorage.nickname + "_" + pose_name + '_image.jpeg';
   var params = {Key: filename, ContentType: 'image/jpeg', Body: blobData};
   s3.upload(params, function (err, data) {
       console.log(data);

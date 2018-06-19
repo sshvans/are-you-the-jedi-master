@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1">
+  <title>Are you the Jedi Master?</title>
+
+  <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <link rel="stylesheet" href="css/register.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://sdk.amazonaws.com/js/aws-sdk-2.250.1.min.js"></script>
+  <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+
+</head>
+
+<body>
+
+  <div class="container bg">
+    <h1 class="text-center">Are you the Jedi Master?</h1>
+    <h3 class="text-center">Jedi registration</h3>
+    <div class="row justify-content-center m-2">
+      <div class="col text-left">
+        <h4 class="text-center">Step 1: Enter Details</h4>
+        <form class="jedi-info" >
+          <div class="form-group required" >
+            <label class="control-label" for="firstname">First Name</label>
+            <!-- use 'control-label' class as the red * will be after control-label -->
+            <input type="text" class="form-control" id="firstname" placeholder="First Name" >
+          </div>
+          <div class="form-group required">
+            <label class="control-label" for="lastname">Last Name</label>
+            <input type="text" class="form-control" id="lastname" placeholder="Last Name" >
+          </div>
+          <div class="form-group required">
+            <label class="control-label" for="nickname">Nick Name (unique)</label>
+            <input type="text" class="form-control" id="nickname" placeholder="Nick Name" >
+          </div>
+        </form>
+        <div id="validate-message"></div>
+      </div>
+      <div class="col text-center">
+        <h4 class="text-center">Step 2: Take a Selfie</h4>
+        <div class="space"></div>
+        <div class="videoContainer">
+          <video autoplay></video>
+        </div>
+        <div>
+          <img id="captureBtn" src="images/camera.png" height="50px" width="50px"/>
+        </div>
+        <div class="canvasContainer">
+          <canvas></canvas>
+        </div>
+      </div>
+      <div class="col text-center">
+        <h4 class="text-center">Step 3: Submit</h4>
+        <div class="space"></div>
+          <img id="registerBtn" src="images/register-button.png" height="100px" width="100px"/>
+      </div>
+    </div>
+    <div class="row justify-content-center m-2">
+      <div class="col text-center">
+        
+      </div>
+      <div class="col text-center">
+      </div>
+      <div class="col text-center">
+        
+      </div>
+    </div>
+    <div class="row justify-content-center m-2">
+      <div class="col text-center">
+        <!--button id="prevBtn" class="navBtn">&lt;&lt;Prev</button-->
+        <!--button id="nextBtn" class="navBtn">Next&gt;&gt;</button-->
+      </div>
+    </div>
+  </div>
+
+  <script src="js/register.js"></script>
+</body>
+
+</html>
