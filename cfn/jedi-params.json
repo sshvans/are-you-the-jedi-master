@@ -1,0 +1,18 @@
+[
+    {
+        "ParameterValue": "KEYNAME_TOKEN",
+        "ParameterKey": "KeyName"
+    },
+    {
+        "ParameterValue": "VPC_TOKEN",
+        "ParameterKey": "VPCID"
+    },
+    {
+        "ParameterValue": "0.0.0.0/0",
+        "ParameterKey": "RemoteAccessCIDR"
+    },
+    {
+        "ParameterValue": "BUCKET_TOKEN",
+        "ParameterKey": "ArtifactBucket"
+    }
+]
