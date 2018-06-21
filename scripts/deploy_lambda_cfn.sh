@@ -1,5 +1,9 @@
 #! /bin/bash
 
+# Command to run from project root
+# bash scripts/deploy_lambda_cfn.sh <region> <key-name> <lambda-bucket-name> <stack-name> e.g.
+# bash scripts/deploy_lambda_cfn.sh us-west-2 cikey ddr-code-2 jedi-stack
+
 REGION=$1
 KEY_NAME=$2
 DDR_ASSETS_BUCKET=$3
