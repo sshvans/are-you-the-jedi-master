@@ -3,6 +3,7 @@
 REGION=$1
 KEY_NAME=$2
 DDR_ASSETS_BUCKET=$3
+STACK_NAME=$4
 
 aws s3 mb s3://${DDR_ASSETS_BUCKET} --region ${REGION}
 
@@ -38,9 +39,9 @@ sed -i '' "s/BUCKET_TOKEN/${DDR_ASSETS_BUCKET}/g" cfn/jedi-params.json
 
 echo "Replaced tokens in cloudformation parameters file"
 
-aws cloudformation --region ${REGION} create-stack --stack-name $2 \
+aws cloudformation --region ${REGION} create-stack --stack-name $4 \
   --template-url https://${DDR_ASSETS_BUCKET}.s3.amazonaws.com/templates/jedi-api.json \
-  --parameters file://jedi-params.json \
+  --parameters file://cfn/jedi-params.json \
   --capabilities "CAPABILITY_IAM"
 
 echo "Successfully launched stack"
