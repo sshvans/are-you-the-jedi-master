@@ -1,8 +1,8 @@
 {
   "leaderboard": [
-    { "id": 1, "nickname": "yoda", "score": "95" },
-    { "id": 2, "nickname": "luke", "score": "88" },
-    { "id": 3, "nickname": "ray", "score": "72" }
+    [ "yoda", 95],
+    [ "luke", 88],
+    [ "ray", 72]
   ],
   "score": { 
     "id": 1, 
