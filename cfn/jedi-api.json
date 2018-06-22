@@ -496,6 +496,25 @@
                             }
                         }
                     ]
+                },
+                "CorsConfiguration": {
+                    "CorsRules": [
+                        {
+                            "AllowedHeaders": [
+                                "*"
+                            ],
+                            "AllowedMethods": [
+                                "DELETE",
+                                "GET",
+                                "HEAD",
+                                "POST",
+                                "PUT"
+                            ],
+                            "AllowedOrigins": [
+                                "*"
+                            ]
+                        }
+                    ]
                 }
             }
         },
@@ -524,7 +543,9 @@
                         {
                             "Sid": "AllowS3Access",
                             "Effect": "Allow",
-                            "Principal": "*",
+                            "Principal": {
+                                "Fn::Sub": "arn:aws:iam::${AWS::AccountId}:root"
+                            },
                             "Action": "SQS:SendMessage",
                             "Resource": {
                                 "Fn::GetAtt": [
