@@ -49,10 +49,6 @@ function convertCanvasToImage(canvas) {
 // Setup AWS config to upload image to S3
 // -----------------------------------------------------------------------------
 
-var bucketName = 'areyouthejedi';
-var bucketRegion = 'us-west-2';
-var identityPoolId = 'us-west-2:c4578908-78a0-4ce6-9e97-01c067bdf44c';
-
 AWS.config.update({
   region: bucketRegion,
   credentials: new AWS.CognitoIdentityCredentials({
@@ -149,7 +145,11 @@ function validate() {
 // Check if a string exist in an array
 function arrayContains(needle, arrhaystack)
 {
-  return (arrhaystack.indexOf(needle) > -1);
+  console.log("Array = " + arrhaystack);
+  console.log("Search String = " + needle);
+  var needleLocation = arrhaystack.indexOf(needle);
+  console.log("search string location in array = " + needleLocation);
+  return(needleLocation > -1);
 }
 
 // Check if nickname is already taken
@@ -164,7 +164,7 @@ function isNicknameUnique(nick) {
     // convert nicknames array string to array object
     var nicknamesArr = JSON.parse(nicknamesArrString);
     // Check if nickname exist in nickname array and return true/false
-    return arrayContains(nick, nicknamesArr);
+    return (!arrayContains(nick, nicknamesArr));
   }
 }
 
@@ -178,7 +178,7 @@ function registerUser() {
     var nickname = document.getElementById("nickname").value;
     
     // register user
-    var url = "https://my-json-server.typicode.com/sshvans/are-you-the-jedi-master/register";
+    var url = "https://p80r9q55ph.execute-api.us-west-2.amazonaws.com/prod/register";
     var queryParam = "?n=" + nickname + "&f=" + firstname + "&l=" + lastname;
     var uri = url + queryParam;
     var encodedUri = encodeURI(uri);

@@ -5,9 +5,8 @@
     [ "ray", 72]
   ],
   "score": { 
-    "id": 1, 
-    "nickname": "yoda", 
-    "score": "95" 
+    "statusCode": 200,
+    "score": 95 
   },
   "register": {
     "nickname": "nickname",

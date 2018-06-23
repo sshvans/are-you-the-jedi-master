@@ -49,10 +49,6 @@ function convertCanvasToImage(canvas) {
 // Setup AWS config to upload image to S3
 // -----------------------------------------------------------------------------
 
-var bucketName = 'areyouthejedi';
-var bucketRegion = 'us-west-2';
-var identityPoolId = 'us-west-2:c4578908-78a0-4ce6-9e97-01c067bdf44c';
-
 AWS.config.update({
   region: bucketRegion,
   credentials: new AWS.CognitoIdentityCredentials({

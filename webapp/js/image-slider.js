@@ -23,11 +23,11 @@ cardDesc[4] = "Pose 5 ...";
 
 
 var drawCard = [
-	"images/pose1.jpg",
-	"images/pose2.jpg",
-	"images/pose3.jpg",
-	"images/pose4.png",
-	"images/pose5.jpg"
+	"images/jedi_pose1.jpg",
+	"images/jedi_pose2.jpg",
+	"images/jedi_pose3.jpg",
+	"images/jedi_pose4.jpg",
+	"images/jedi_pose5.jpg"
 ];
 
 var drawNum = 0;
