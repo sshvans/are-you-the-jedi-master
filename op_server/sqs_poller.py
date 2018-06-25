@@ -170,7 +170,7 @@ def processImage(filename, serverIndex):
     socket.connect("tcp://localhost:" + str(serverIndex))
 
     #  Send request
-    socket.send(filename.encode() + '\0')
+    socket.send(filename + '\0')
 
     #  Get the reply.
     message = socket.recv()
