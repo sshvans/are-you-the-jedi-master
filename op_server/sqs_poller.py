@@ -107,7 +107,7 @@ def processOpenpose(s3bucket, s3filename, filename, serverIndex, numServers):
             traceback.print_exc()
             print(str(e))
 
-    if result == "Done.":
+    if result.decode() == "Done.":
         # heappush(fileQueue, filename)
         rendered_file = filename.replace(".jpg", "_rendered.png")
         s3.Bucket(s3bucket).upload_file(os.path.expanduser('~') + '/rendered/' + rendered_file,
