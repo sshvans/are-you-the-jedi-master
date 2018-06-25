@@ -57,7 +57,7 @@ def poll_sqs():
 
             print("Processed s3 file in: " + str(elapsed_time))
 
-            if result == "Done.":
+            if result.decode() == "Done.":
                 print("Processed image {}".format(s3filename))
 
 
@@ -170,7 +170,7 @@ def processImage(filename, serverIndex):
     socket.connect("tcp://localhost:" + str(serverIndex))
 
     #  Send request
-    socket.send(filename + '\0')
+    socket.send_string(filename + '\0')
 
     #  Get the reply.
     message = socket.recv()
