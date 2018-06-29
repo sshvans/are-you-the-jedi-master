@@ -57,7 +57,7 @@ def poll_sqs():
 
             print("Processed s3 file in: " + str(elapsed_time))
 
-            if result == "Done.":
+            if result.decode() == "Done.":
                 print("Processed image {}".format(s3filename))
 
 
@@ -101,9 +101,13 @@ def processOpenpose(s3bucket, s3filename, filename, serverIndex, numServers):
         print(str(e))
 
     if int(poseNum) == numPoses:
-        updateLeaderboard(nickname)
+        try:
+            updateLeaderboard(nickname)
+        except Exception as e:
+            traceback.print_exc()
+            print(str(e))
 
-    if result == "Done.":
+    if result.decode() == "Done.":
         # heappush(fileQueue, filename)
         rendered_file = filename.replace(".jpg", "_rendered.png")
         s3.Bucket(s3bucket).upload_file(os.path.expanduser('~') + '/rendered/' + rendered_file,
@@ -117,27 +121,16 @@ def processOpenpose(s3bucket, s3filename, filename, serverIndex, numServers):
 def updateLeaderboard(nickname):
     dynamodb = boto3.resource('dynamodb', region_name=s3region)
     table = dynamodb.Table(leaderboardTable)
-    try:
-        response = table.update_item(
-          Key={
-            'all_scores': 'dummy'
-          },
-          UpdateExpression="set scores." + nickname + " = :s",
-          ExpressionAttributeValues={
-            ':s': decimal.Decimal(scoreTotal(nickname))
-          },
-          ReturnValues="UPDATED_NEW"
-        )
-    except:
-        scoresData = {
-          'all_scores': 'dummy',
-          'scores': {
-            nickname: decimal.Decimal(scoreTotal(nickname))
-          }
-        }
-        response = table.put_item(
-          Item=scoresData
-        )
+    response = table.update_item(
+      Key={
+        'all_scores': 'dummy'
+      },
+      UpdateExpression="set scores." + nickname + " = :s",
+      ExpressionAttributeValues={
+        ':s': decimal.Decimal(scoreTotal(nickname))
+      },
+      ReturnValues="UPDATED_NEW"
+    )
     print(json.dumps(response, indent=4, cls=ddb_util.DecimalEncoder))
 
 
@@ -177,14 +170,31 @@ def processImage(filename, serverIndex):
     socket.connect("tcp://localhost:" + str(serverIndex))
 
     #  Send request
-    socket.send(filename.encode() + '\0')
+    socket.send_string(filename + '\0')
 
     #  Get the reply.
     message = socket.recv()
     return message
 
+def initLeaderboardTable():
+    dynamodb = boto3.resource('dynamodb', region_name=s3region)
+    scoresData = {
+        'all_scores': 'dummy',
+        'scores': {
+        }
+    }
+    leaderTable = dynamodb.Table(leaderboardTable)
+    items = leaderTable.scan()
+    itemCount = len(items['Items'])
+    if not itemCount:
+        print("Initialized empty scores dict")
+        leaderTable.put_item(Item = scoresData)
+    else:
+        print("Table already initialized")
+
 
 def main(argv):
+    initLeaderboardTable()
     while True:
         # Run forever, poll queue for new messages, sleeping 100ms in between
         poll_sqs()
