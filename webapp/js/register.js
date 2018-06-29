@@ -133,10 +133,8 @@ $(function () {
 
 // Validate required fields not empty
 function validate() {
-  var firstname = document.getElementById("firstname").value;
-  var lastname = document.getElementById("lastname").value;
   var nickname = document.getElementById("nickname").value;
-  if(firstname == "" || lastname == "" || nickname == "") {
+  if(nickname == "") {
       return false;
   }
   return true;
@@ -173,13 +171,11 @@ function registerUser() {
   // Return a new promise
   return new Promise(function(resolve, reject) {
     console.log("Making api call to register user in the system");
-    var firstname = document.getElementById("firstname").value;
-    var lastname = document.getElementById("lastname").value;
     var nickname = document.getElementById("nickname").value;
     
     // register user
     var url = "https://p80r9q55ph.execute-api.us-west-2.amazonaws.com/prod/register";
-    var queryParam = "?n=" + nickname + "&f=" + firstname + "&l=" + lastname;
+    var queryParam = "?n=" + nickname;
     var uri = url + queryParam;
     var encodedUri = encodeURI(uri);
     console.log("EncodedUri = " + encodedUri);
