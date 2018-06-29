@@ -82,6 +82,10 @@ $(function () {
   });
 });
 
+// Hide Success/Alert msg divs
+$('#successAlert').hide();
+$('#errorAlert').hide();
+
 // Get nickname from localstorage and save it in global variable
 var nicknameStr = window.localStorage.getItem("nickname");
 
@@ -96,6 +100,13 @@ function upload() {
   s3.upload(params, function (err, data) {
       console.log(data);
       console.log(err ? 'ERROR!' : 'UPLOADED.');
+      if (err) {
+        $('#successAlert').hide();
+        $('#errorAlert').show();
+      } else {
+        $('#errorAlert').hide();
+        $('#successAlert').show();
+      }
   });
 }
 

@@ -17,6 +17,7 @@
   <script src="https://sdk.amazonaws.com/js/aws-sdk-2.250.1.min.js"></script>
   <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
 
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -25,6 +26,19 @@
     <h1 class="text-center">Are you the Jedi Master?</h1>
     <h3 class="text-center">Show your Jedi skills</h3>
     <p class="text-center">Try to pose as closely as possible to the reference pose and when ready click <img src="images/camera.png" height="30px" width="30px"/> to capture and <img src="images/upload-button.png" height="40px" width="40px"/> to upload the image. Repeat this for all 5 poses.</p>
+    <div id="successAlert" class="alert alert-success alert-dismissible" role="alert">
+      <button type="button" class="close" onclick="$('.alert').hide()" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <strong>Success!</strong> Your image is uploaded succesfully to the Jedi Council for review!
+    </div>
+    <div id="errorAlert" class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" onclick="$('.alert').hide()" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <strong>Oops!</strong> Something went wrong. Jedi Council is working hard to fix the problem!
+    </div>
+    
     <div class="row justify-content-center m-2">
       <div class="col text-right">
         <img id="prevBtn" src="images/prev-button.png" height="50px" width="50px"/>
