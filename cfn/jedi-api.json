@@ -38,7 +38,7 @@
         "NumPoses": {
             "AllowedPattern": "^[0-9]*$",
             "Description": "Number of reference poses",
-            "Default": "5",
+            "Default": "3",
             "Type": "String"
         }
     },
