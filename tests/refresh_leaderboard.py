@@ -34,6 +34,7 @@ def scoreTotal(nickname):
 def updateLeaderboard(nickname):
   dynamodb = boto3.resource('dynamodb', region_name=s3region)
   table = dynamodb.Table(leaderboardTable)
+
   try:
     response = table.update_item(
       Key={
@@ -46,15 +47,8 @@ def updateLeaderboard(nickname):
       ReturnValues="UPDATED_NEW"
     )
   except:
-    scoresData = {
-      'all_scores': 'dummy',
-      'scores': {
-        nickname: decimal.Decimal(scoreTotal(nickname))
-      }
-    }
-    response = table.put_item(
-      Item=scoresData
-    )
+    pass
+
   print(json.dumps(response, indent=4, cls=DecimalEncoder))
 
 def refreshLeaderboardTable():
@@ -80,7 +74,7 @@ def initLeaderboardTable():
 
 
 if __name__ == '__main__':
-    # initLeaderboardTable()
+    initLeaderboardTable()
     refreshLeaderboardTable()
 
 

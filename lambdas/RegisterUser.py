@@ -43,7 +43,7 @@ def userExists(nickname):
     )
   return 'Item' in getItemResult
 
-def registerUser(nickname, firstName, lastName, hasDP = True):
+def registerUser(nickname, firstName = 'NA', lastName = 'NA', hasDP = True):
   regData = {'nick_name': nickname, 'first_name': firstName, 'last_name': lastName, 'scores': {}}
   if hasDP:
     faceId = indexFaces(s3bucket, collectionId, s3prefix, nickname + "_profile.jpg")
@@ -66,7 +66,10 @@ def lambda_handler(event, context):
 
   if not isDuplicate:
     try:
-      registerResponse = registerUser(params['n'], params['f'], params['l'] )
+      hasDP = params.get('p', 'true') == 'true'
+      registerResponse = registerUser(params['n'], params.get('f', 'NA'),
+                                      params.get('l', 'NA'),
+                                      hasDP)
       logger.debug('Registration response is {}'.format(registerResponse))
       status = {'statusCode': 200, 'reason': 'Registration successful'}
     except Exception as e:
