@@ -1,13 +1,11 @@
+import numpy as np
+
 # For details, see this article and contained github gists
 # https://becominghuman.ai/single-pose-comparison-a-fun-application-using-human-pose-estimation-part-2-4fd16a8bf0d3
 # https://gist.githubusercontent.com/gilbeckers/37d784bdadce7f7086dc8affc151c5fa/raw/a9a88ddf95428cc0559947a4275f78b57ea6b7a8/affine_transformation.py
-
-import numpy as np
-from op_server import ddr_score
-
 def affine_transform(pose_points1, pose_points2):
-  model_features = ddr_score.feature_vector(pose_points1)
-  input_features = ddr_score.feature_vector(pose_points2)
+  model_features = feature_vector(pose_points1)
+  input_features = feature_vector(pose_points2)
 
   # In order to solve the augmented matrix (incl translation),
   # it's required all vectors are augmented with a "1" at the end
@@ -27,3 +25,15 @@ def affine_transform(pose_points1, pose_points2):
   transform = lambda x: unpad(np.dot(pad(x), A))
   input_transform = transform(input_features)
   return input_transform
+
+
+def feature_vector(pose_points):
+  # input_features = [[x1,y2],[x2,y2],...]
+  features = []
+  for i in range(0,18):
+    xi = pose_points[3 * i]
+    yi = pose_points[3 * i + 1]
+    ci = pose_points[3 * i + 2] # Ignored
+    ithCoordinate = [xi, yi]
+    features.append(ithCoordinate)
+  return np.array(features)

@@ -49,7 +49,7 @@ def pose_match(model_points, input_points):
     :return: similarity score
     """
     num_points = int(min(len(model_points), len(input_points)) / 3)
-    pose_points1 = feature_vector(model_points)
+    pose_points1 = affine_transform.feature_vector(model_points)
     print(pose_points1)
     pose_points2 = affine_transform.affine_transform(model_points, input_points)
     print(pose_points2)
@@ -81,18 +81,6 @@ def pose_match(model_points, input_points):
 
     return total_pct_proximity / len(imp_points)
 
-
-
-def feature_vector(pose_points):
-    # input_features = [[x1,y2],[x2,y2],...]
-    features = []
-    for i in range(0,18):
-        xi = pose_points[3 * i]
-        yi = pose_points[3 * i + 1]
-        ci = pose_points[3 * i + 2] # Ignored
-        ithCoordinate = [xi, yi]
-        features.append(ithCoordinate)
-    return np.array(features)
 
 def fetch_score(file1, file2):
     """
