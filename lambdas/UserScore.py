@@ -3,6 +3,7 @@ import json
 import logging
 import operator
 import os
+import math
 
 import boto3
 
@@ -26,7 +27,7 @@ def scoreTotal(nickname):
     }
   )
   scores = response['Item']['scores'].values()
-  avg = float(sum(scores))/len(scores)
+  avg = math.ceil(float(sum(scores))/len(scores))
   return avg
 
 

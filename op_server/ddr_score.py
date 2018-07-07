@@ -3,6 +3,7 @@ import math
 import sys
 import os
 import numpy as np
+from op_server import affine_transform
 
 def load_file(input_file):
     with open(input_file) as data_file:
@@ -50,7 +51,7 @@ def pose_match(model_points, input_points):
     num_points = int(min(len(model_points), len(input_points)) / 3)
     pose_points1 = feature_vector(model_points)
     print(pose_points1)
-    pose_points2 = affine_transform(model_points, input_points)
+    pose_points2 = affine_transform.affine_transform(model_points, input_points)
     print(pose_points2)
     pt_distances = []
     pt_proximity = []
@@ -80,28 +81,7 @@ def pose_match(model_points, input_points):
 
     return total_pct_proximity / len(imp_points)
 
-def affine_transform(pose_points1, pose_points2):
-    model_features = feature_vector(pose_points1)
-    input_features = feature_vector(pose_points2)
 
-    # In order to solve the augmented matrix (incl translation),
-    # it's required all vectors are augmented with a "1" at the end
-    # -> Pad the features with ones, so that our transformation can do translations too
-    pad = lambda x: np.hstack([x, np.ones((x.shape[0], 1))])
-    unpad = lambda x: x[:, :-1]
-
-    # Pad to [[ x y 1] , [x y 1]]
-    Y = pad(model_features)
-    X = pad(input_features)
-
-    # Solve the least squares problem X * A = Y
-    # and find the affine transformation matrix A.
-    A, res, rank, s = np.linalg.lstsq(X, Y, rcond=None)
-    A[np.abs(A) < 1e-10] = 0  # set really small values to zero
-
-    transform = lambda x: unpad(np.dot(pad(x), A))
-    input_transform = transform(input_features)
-    return input_transform
 
 def feature_vector(pose_points):
     # input_features = [[x1,y2],[x2,y2],...]
@@ -129,6 +109,7 @@ def fetch_score(file1, file2):
 def main(argv):
     file1 = os.path.expanduser('~') + '/dev/ddr/tmp/jedi12018-06-07T01_20_07.196285.json'
     file2 = os.path.expanduser('~') + '/dev/ddr/tmp/imag12018-06-07T11_49_06.275068.json'
+    # file2 = os.path.expanduser('~') + '/dev/ddr/tmp/vsnyc_1.json'
 
     pose_match_result = fetch_score(file1, file2)
 

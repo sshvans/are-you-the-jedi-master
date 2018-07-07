@@ -5,6 +5,7 @@ import re
 import sys
 import time
 import traceback
+import math
 
 import boto3
 import zmq
@@ -143,7 +144,7 @@ def scoreTotal(nickname):
       }
     )
     scores = response['Item']['scores'].values()
-    avg = float(sum(scores))/len(scores)
+    avg = math.ceil(float(sum(scores))/len(scores))
     return str(avg)
 
 
