@@ -81,7 +81,7 @@ function addRow(poseNo, poseName) {
 
 	var refImageElement = document.createElement("img");
 	refImageElement.setAttribute("class", "pose-pic");
-	refImagePath = "images/jedi_" +poseName+ ".jpg";
+	refImagePath = "images/jedi_" +poseName+ "_rendered.png";
 	refImageElement.setAttribute("src", refImagePath);
 	referencePicColumn.appendChild(refImageElement);
 

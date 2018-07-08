@@ -95,13 +95,13 @@ def fetch_score(file1, file2):
 
 
 def main(argv):
-    file1 = os.path.expanduser('~') + '/dev/ddr/tmp/jedi12018-06-07T01_20_07.196285.json'
-    file2 = os.path.expanduser('~') + '/dev/ddr/tmp/imag12018-06-07T11_49_06.275068.json'
+
+    for i in range(1, 5):
+        file1 = os.path.expanduser('~') + '/dev/are-you-the-jedi-master/json-test/jedi_pose' + str(i) + '.json'
+        file2 = os.path.expanduser('~') + '/dev/are-you-the-jedi-master/json-test/jedi123_pose' + str(i) + '.json'
     # file2 = os.path.expanduser('~') + '/dev/ddr/tmp/vsnyc_1.json'
-
-    pose_match_result = fetch_score(file1, file2)
-
-    print(pose_match_result)
+        pose_match_result = fetch_score(file1, file2)
+        print(pose_match_result)
 
     return
 
