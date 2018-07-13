@@ -1,33 +1,25 @@
 var cardTitle = [
 	"Pose 1",
 	"Pose 2",
-	"Pose 3",
-	"Pose 4",
-	"Pose 5"
+	"Pose 3"
 ];
 
 var cardNumber = [
 	"1",
 	"2",
-	"3",
-	"4",
-	"5"
+	"3"
 ];
 
 var cardDesc = [];
 cardDesc[0] = "Pose 1 ...";
 cardDesc[1] = "Pose 2 ...";
 cardDesc[2] = "Pose 3 ...";
-cardDesc[3] = "Pose 4 ...";
-cardDesc[4] = "Pose 5 ...";
 
 
 var drawCard = [
 	"images/jedi_pose1.jpg",
 	"images/jedi_pose2.jpg",
-	"images/jedi_pose3.jpg",
-	"images/jedi_pose4.jpg",
-	"images/jedi_pose5.jpg"
+	"images/jedi_pose3.jpg"
 ];
 
 var drawNum = 0;

@@ -22,9 +22,7 @@ var s3 = new AWS.S3({
 var poses = [
 	"pose1",
 	"pose2",
-	"pose3",
-	"pose4",
-	"pose5"
+	"pose3"
 ];
 
 // Get nickname from localstorage and save it in global variable

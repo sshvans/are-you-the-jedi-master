@@ -65,10 +65,10 @@ $(function () {
   $('#uploadBtn').click(upload);
   $("#uploadBtn").on({
     mouseenter: function(){
-      $(this).attr('src','images/upload-button-dark.png');
+      $(this).attr('src','images/saveBtnDark.png');
     },
     mouseleave: function(){
-      $(this).attr('src','images/upload-button.png');
+      $(this).attr('src','images/saveBtn.png');
     }
   });
 
